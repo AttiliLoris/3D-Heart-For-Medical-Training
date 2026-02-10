@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // NECESSARIO PER IL TESTO
+using UnityEngine.EventSystems;
 
 public class HeartUIManager : MonoBehaviour
 {
@@ -81,13 +82,16 @@ public class HeartUIManager : MonoBehaviour
 
     public void ResetFilters()
     {
+        // Nascondi descrizione quando resetti tutto
+        HideDescriptionUI();
         foreach (var p in allParts)
         {
             p.Show();
             p.ResetVisuals();
         }
-        // Nascondi descrizione quando resetti tutto
-        HideDescriptionUI();
+        
+        currentSelectedPart = null;
+        
     }
 
     // --- HELPER UI ---
